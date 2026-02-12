@@ -1,0 +1,106 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test -v ./...
+
+      - name: Build Binaries
+        env:
+          V: ${{ steps.get_version.outputs.VERSION }}
+        run: |
+          mkdir -p build
+          # Build for Linux
+          GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-linux-amd64
+          tar -czf todo-$V-linux-amd64.tar.gz -C build todo-linux-amd64
+
+          # Build for macOS Intel
+          GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-darwin-amd64
+          tar -czf todo-$V-darwin-amd64.tar.gz -C build todo-darwin-amd64
+
+          # Build for macOS Apple Silicon
+          GOOS=darwin GOARCH=arm64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-darwin-arm64
+          tar -czf todo-$V-darwin-arm64.tar.gz -C build todo-darwin-arm64
+
+          # Build for Windows
+          GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-windows-amd64.exe
+          zip -j todo-$V-windows-amd64.zip build/todo-windows-amd64.exe
+
+      - name: Generate changelog
+        id: changelog
+        shell: bash
+        run: |
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          if git describe --tags --abbrev=0 HEAD^ >/dev/null 2>&1; then
+            git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s (%an)" >> $GITHUB_OUTPUT
+          else
+            git log --pretty=format:"- %s (%an)" >> $GITHUB_OUTPUT
+          fi
+          echo "" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Todo CLI ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            ## Todo CLI ${{ steps.get_version.outputs.VERSION }}
+            ${{ steps.changelog.outputs.CHANGELOG }}
+          files: |
+            todo-*.tar.gz
+            todo-*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Homebrew formula
+        uses: mislav/bump-homebrew-formula-action@v3
+        with:
+          formula-name: todo-cli
+          # Explicit path to the formula file
+          formula-path: Formula/todo-cli.rb
+          homebrew-tap: GourangaDasSamrat/homebrew-tap
+          base-branch: main
+          download-url: https://github.com/GourangaDasSamrat/todo-cli-go/releases/download/${{ steps.get_version.outputs.VERSION }}/todo-${{ steps.get_version.outputs.VERSION }}-darwin-amd64.tar.gz
+          commit-message: "chore: update todo-cli formula to ${{ steps.get_version.outputs.VERSION }}"
+        env:
+          COMMITTER_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries
+          path: |
+            build/todo-*
+            *.tar.gz
+            *.zip
+          retention-days: 7
