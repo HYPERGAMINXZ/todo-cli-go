@@ -7,48 +7,47 @@ A professional, feature-rich command-line todo application built with Go, follow
 ## Project Structure
 
 ```
-todo-cli/
-├── .github/workflows/           # Github action
-│   └── release.yml              # Release for all os and homebrew
-│
-├── cmd/                         # CLI Commands (Cobra framework)
-│   ├── root.go                  # Root command & initialization
-│   ├── add.go                   # Add task command
-│   ├── list.go                  # List/filter tasks command
-│   ├── edit.go                  # Edit task command
-│   ├── delete.go                # Delete task command
-│   ├── complete.go              # Mark complete/incomplete
-│   ├── search.go                # Search tasks command
-│   ├── backup.go                # Backup & restore commands
-│   └── interactive.go           # Interactive mode
-│
-├── internal/                     # Private application code
-│   ├── models/
-│   │   └── task.go              # Task data structures & methods
-│   ├── storage/
-│   │   └── storage.go           # JSON/YAML storage implementations
-│   ├── ui/
-│   │   ├── ui.go                # Colored output & formatting
-│   │   └── interactive.go       # Interactive prompts & menus
-│   └── utils/
-│       └── utils.go             # Utility functions (ID generation, date parsing)
-│
-├── pkg/                          # Public reusable packages
-│   ├── filter/
-│   │   └── filter.go            # Task filtering logic
-│   └── sort/
-│       └── sort.go              # Task sorting algorithms
-│
-├── main.go                       # Application entry point
-├── go.mod                        # Go module definition
-├── go.sum                        # Dependency checksums (auto-generated)
-├── Makefile                      # Build automation
-├── README.md                     # Main documentation
-├── CONTRIBUTING.md               # Contribution guidelines
-├── EXAMPLES.md                   # Usage examples
-├── LICENSE                       # MIT License
-├── .gitignore                    # Git ignore rules
-└── todo-completion.bash          # Bash tab completion
+todo-cli-go/
+├── .github/
+│   └── workflows/
+│       └── release.yml          # Automated release workflow
+├── cmd/                         # CLI commands
+│   ├── root.go                 # Root command
+│   ├── add.go                  # Add task command
+│   ├── list.go                 # List tasks command
+│   ├── edit.go                 # Edit task command
+│   ├── delete.go               # Delete task command
+│   ├── complete.go             # Complete task command
+│   ├── search.go               # Search command
+│   ├── backup.go               # Backup/restore commands
+│   └── interactive.go          # Interactive mode
+├── docs/
+│   ├── docs/                   # Documentation website
+│   ├── CONTRIBUTING.md         # Contribution guidelines
+│   ├── EXAMPLES.md             # Detailed examples
+│   ├── Project_Summary.md      # This file
+│   └── Quickstart.md           # Quick start guide
+├── internal/
+│   ├── models/                 # Data models
+│   │   └── task.go
+│   ├── storage/                # Storage implementations
+│   │   └── storage.go
+│   ├── ui/                     # UI utilities
+│   │   ├── ui.go
+│   │   └── interactive.go
+│   └── utils/                  # Utility functions
+│       └── utils.go
+├── pkg/
+│   ├── filter/                 # Task filtering
+│   │   └── filter.go
+│   └── sort/                   # Task sorting
+│       └── sort.go
+├── main.go                     # Application entry point
+├── go.mod                      # Go module definition
+├── go.sum                      # Go dependencies checksums
+├── Makefile                    # Build automation
+├── LICENSE                     # MIT License
+└── README.md                   # Readme file
 ```
 
 ## Features Implemented

@@ -321,6 +321,7 @@ todo-cli-go/
 │   ├── backup.go               # Backup/restore commands
 │   └── interactive.go          # Interactive mode
 ├── docs/
+│   ├── docs/                   # Documentation website
 │   ├── CONTRIBUTING.md         # Contribution guidelines
 │   ├── EXAMPLES.md             # Detailed examples
 │   ├── Project_Summary.md      # Project overview
