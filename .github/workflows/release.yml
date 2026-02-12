@@ -1,39 +1,30 @@
 name: Release
-
 on:
   push:
     tags:
       - 'v*.*.*'
-
 permissions:
   contents: write
-
 jobs:
   release:
     name: Build and Release
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: '1.21'
-
       - name: Get version from tag
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-
       - name: Download dependencies
         run: go mod download
-
       - name: Run tests
         run: go test -v ./...
-
       - name: Build Binaries
         env:
           V: ${{ steps.get_version.outputs.VERSION }}
@@ -42,19 +33,15 @@ jobs:
           # Build for Linux
           GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-linux-amd64
           tar -czf todo-$V-linux-amd64.tar.gz -C build todo-linux-amd64
-
           # Build for macOS Intel
           GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-darwin-amd64
           tar -czf todo-$V-darwin-amd64.tar.gz -C build todo-darwin-amd64
-
           # Build for macOS Apple Silicon
           GOOS=darwin GOARCH=arm64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-darwin-arm64
           tar -czf todo-$V-darwin-arm64.tar.gz -C build todo-darwin-arm64
-
           # Build for Windows
           GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X main.version=$V" -o build/todo-windows-amd64.exe
           zip -j todo-$V-windows-amd64.zip build/todo-windows-amd64.exe
-
       - name: Generate changelog
         id: changelog
         shell: bash
@@ -67,7 +54,6 @@ jobs:
           fi
           echo "" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -81,20 +67,64 @@ jobs:
             todo-*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      
+      - name: Calculate SHA256 checksums
+        id: checksums
+        run: |
+          INTEL_SHA=$(sha256sum todo-${{ steps.get_version.outputs.VERSION }}-darwin-amd64.tar.gz | awk '{print $1}')
+          ARM_SHA=$(sha256sum todo-${{ steps.get_version.outputs.VERSION }}-darwin-arm64.tar.gz | awk '{print $1}')
+          echo "INTEL_SHA=$INTEL_SHA" >> $GITHUB_OUTPUT
+          echo "ARM_SHA=$ARM_SHA" >> $GITHUB_OUTPUT
+      
       - name: Update Homebrew formula
-        uses: mislav/bump-homebrew-formula-action@v3
-        with:
-          formula-name: todo-cli
-          # Explicit path to the formula file
-          formula-path: Formula/todo-cli.rb
-          homebrew-tap: GourangaDasSamrat/homebrew-tap
-          base-branch: main
-          download-url: https://github.com/GourangaDasSamrat/todo-cli-go/releases/download/${{ steps.get_version.outputs.VERSION }}/todo-${{ steps.get_version.outputs.VERSION }}-darwin-amd64.tar.gz
-          commit-message: "chore: update todo-cli formula to ${{ steps.get_version.outputs.VERSION }}"
         env:
-          COMMITTER_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
-
+          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
+          INTEL_SHA: ${{ steps.checksums.outputs.INTEL_SHA }}
+          ARM_SHA: ${{ steps.checksums.outputs.ARM_SHA }}
+        run: |
+          # Clone the tap repository
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/GourangaDasSamrat/homebrew-tap.git
+          cd homebrew-tap
+          
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Update the formula
+          cat > Formula/todo-cli.rb << EOF
+          class TodoCli < Formula
+            desc "A simple and efficient CLI tool for managing your todos"
+            homepage "https://github.com/GourangaDasSamrat/todo-cli-go"
+            version "$VERSION"
+            license "MIT"
+          
+            on_macos do
+              if Hardware::CPU.intel?
+                url "https://github.com/GourangaDasSamrat/todo-cli-go/releases/download/$VERSION/todo-$VERSION-darwin-amd64.tar.gz"
+                sha256 "$INTEL_SHA"
+              else
+                url "https://github.com/GourangaDasSamrat/todo-cli-go/releases/download/$VERSION/todo-$VERSION-darwin-arm64.tar.gz"
+                sha256 "$ARM_SHA"
+              end
+            end
+          
+            def install
+              bin.install "todo-darwin-amd64" => "todo" if Hardware::CPU.intel?
+              bin.install "todo-darwin-arm64" => "todo" if Hardware::CPU.arm?
+            end
+          
+            test do
+              assert_match "Todo CLI $VERSION", shell_output("#{bin}/todo --version")
+            end
+          end
+          EOF
+          
+          # Commit and push
+          git add Formula/todo-cli.rb
+          git commit -m "chore: update todo-cli formula to $VERSION"
+          git push origin main
+      
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
