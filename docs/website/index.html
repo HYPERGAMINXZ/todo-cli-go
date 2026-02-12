@@ -347,7 +347,14 @@
                   The easiest way to install on macOS:
                 </p>
 
-                <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="# Add the tap
+brew tap gourangadassamrat/tap
+
+# Install the app
+brew install todo-cli">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre
                     class="text-gray-100"
                   ><code class="language-bash"># Add the tap
@@ -407,6 +414,7 @@ brew install todo-cli</code></pre>
 
                 <!-- Download Cards -->
                 <div class="grid md:grid-cols-2 gap-4 mb-6">
+                  <!-- macOS Intel -->
                   <div
                     class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-primary-500 transition-colors"
                   >
@@ -421,16 +429,17 @@ brew install todo-cli</code></pre>
                       >
                     </div>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      todo-v1.0.0-darwin-amd64.tar.gz
+                      todo-v1.0.2-darwin-amd64.tar.gz
                     </p>
                     <a
-                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.0/todo-v1.0.0-darwin-amd64.tar.gz"
+                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.2/todo-v1.0.2-darwin-amd64.tar.gz"
                       class="inline-flex items-center text-sm text-primary-500 hover:text-primary-600"
                     >
                       <i class="bi bi-download mr-1"></i> Download
                     </a>
                   </div>
 
+                  <!-- macOS Apple Silicon -->
                   <div
                     class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-primary-500 transition-colors"
                   >
@@ -445,23 +454,24 @@ brew install todo-cli</code></pre>
                       >
                     </div>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      todo-v1.0.0-darwin-arm64.tar.gz
+                      todo-v1.0.2-darwin-arm64.tar.gz
                     </p>
                     <a
-                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.0/todo-v1.0.0-darwin-arm64.tar.gz"
+                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.2/todo-v1.0.2-darwin-arm64.tar.gz"
                       class="inline-flex items-center text-sm text-primary-500 hover:text-primary-600"
                     >
                       <i class="bi bi-download mr-1"></i> Download
                     </a>
                   </div>
 
+                  <!-- Linux AMD64 -->
                   <div
                     class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-primary-500 transition-colors"
                   >
                     <div class="flex items-start justify-between mb-2">
                       <div class="flex items-center">
                         <i class="bi bi-ubuntu text-2xl mr-2"></i>
-                        <h5 class="font-semibold">Linux (64-bit)</h5>
+                        <h5 class="font-semibold">Linux (AMD64)</h5>
                       </div>
                       <span
                         class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded"
@@ -469,23 +479,49 @@ brew install todo-cli</code></pre>
                       >
                     </div>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      todo-v1.0.0-linux-amd64.tar.gz
+                      todo-v1.0.2-linux-amd64.tar.gz
                     </p>
                     <a
-                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.0/todo-v1.0.0-linux-amd64.tar.gz"
+                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.2/todo-v1.0.2-linux-amd64.tar.gz"
                       class="inline-flex items-center text-sm text-primary-500 hover:text-primary-600"
                     >
                       <i class="bi bi-download mr-1"></i> Download
                     </a>
                   </div>
 
+                  <!-- Linux ARM64 -->
+                  <div
+                    class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-primary-500 transition-colors"
+                  >
+                    <div class="flex items-start justify-between mb-2">
+                      <div class="flex items-center">
+                        <i class="bi bi-ubuntu text-2xl mr-2"></i>
+                        <h5 class="font-semibold">Linux (ARM64)</h5>
+                      </div>
+                      <span
+                        class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded"
+                        >1.61 MB</span
+                      >
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      todo-v1.0.2-linux-arm64.tar.gz
+                    </p>
+                    <a
+                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.2/todo-v1.0.2-linux-arm64.tar.gz"
+                      class="inline-flex items-center text-sm text-primary-500 hover:text-primary-600"
+                    >
+                      <i class="bi bi-download mr-1"></i> Download
+                    </a>
+                  </div>
+
+                  <!-- Windows AMD64 -->
                   <div
                     class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-primary-500 transition-colors"
                   >
                     <div class="flex items-start justify-between mb-2">
                       <div class="flex items-center">
                         <i class="bi bi-windows text-2xl mr-2"></i>
-                        <h5 class="font-semibold">Windows (64-bit)</h5>
+                        <h5 class="font-semibold">Windows (AMD64)</h5>
                       </div>
                       <span
                         class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded"
@@ -493,10 +529,35 @@ brew install todo-cli</code></pre>
                       >
                     </div>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                      todo-v1.0.0-windows-amd64.zip
+                      todo-v1.0.2-windows-amd64.zip
                     </p>
                     <a
-                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.0/todo-v1.0.0-windows-amd64.zip"
+                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.2/todo-v1.0.2-windows-amd64.zip"
+                      class="inline-flex items-center text-sm text-primary-500 hover:text-primary-600"
+                    >
+                      <i class="bi bi-download mr-1"></i> Download
+                    </a>
+                  </div>
+
+                  <!-- Windows ARM64 -->
+                  <div
+                    class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-primary-500 transition-colors"
+                  >
+                    <div class="flex items-start justify-between mb-2">
+                      <div class="flex items-center">
+                        <i class="bi bi-windows text-2xl mr-2"></i>
+                        <h5 class="font-semibold">Windows (ARM64)</h5>
+                      </div>
+                      <span
+                        class="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded"
+                        >1.65 MB</span
+                      >
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      todo-v1.0.2-windows-arm64.zip
+                    </p>
+                    <a
+                      href="https://github.com/gourangadassamrat/todo-cli-go/releases/download/v1.0.2/todo-v1.0.2-windows-arm64.zip"
                       class="inline-flex items-center text-sm text-primary-500 hover:text-primary-600"
                     >
                       <i class="bi bi-download mr-1"></i> Download
@@ -504,10 +565,30 @@ brew install todo-cli</code></pre>
                   </div>
                 </div>
 
+                <div
+                  class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-primary-500 p-4 mb-6"
+                >
+                  <div class="flex items-start">
+                    <i
+                      class="bi bi-info-circle text-primary-500 text-xl mr-3 mt-1"
+                    ></i>
+                    <div>
+                      <p class="font-semibold">Platform Notes</p>
+                      <ul class="text-sm text-gray-600 dark:text-gray-400 mt-2 space-y-1">
+                        <li><strong>Linux ARM64:</strong> For Raspberry Pi, AWS Graviton, and other ARM-based Linux systems</li>
+                        <li><strong>Windows ARM64:</strong> For ARM-based Windows devices (Surface Pro X, etc.)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 <h4 class="text-xl font-semibold mb-3 mt-6">
                   Step 2: Test It Works
                 </h4>
-                <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="./todo --help">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre class="text-gray-100"><code>./todo --help</code></pre>
                 </div>
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
@@ -517,7 +598,14 @@ brew install todo-cli</code></pre>
                 <h4 class="text-xl font-semibold mb-3 mt-6">
                   Step 3 (Optional): Install Globally
                 </h4>
-                <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="# Linux/macOS
+sudo cp todo /usr/local/bin/
+
+# Windows
+# Copy todo.exe to a directory in your PATH">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre
                     class="text-gray-100"
                   ><code class="language-bash"># Linux/macOS
@@ -565,7 +653,10 @@ sudo cp todo /usr/local/bin/
             <div class="space-y-6">
               <div>
                 <h3 class="text-xl font-semibold mb-3">Add your first task</h3>
-                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy='todo add -t "Buy groceries" -p high'>
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre
                     class="text-gray-100"
                   ><code>todo add -t "Buy groceries" -p high</code></pre>
@@ -574,14 +665,20 @@ sudo cp todo /usr/local/bin/
 
               <div>
                 <h3 class="text-xl font-semibold mb-3">List all tasks</h3>
-                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="todo list">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre class="text-gray-100"><code>todo list</code></pre>
                 </div>
               </div>
 
               <div>
                 <h3 class="text-xl font-semibold mb-3">Try interactive mode</h3>
-                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="todo interactive">
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre class="text-gray-100"><code>todo interactive</code></pre>
                 </div>
               </div>
@@ -747,7 +844,10 @@ sudo cp todo /usr/local/bin/
               </p>
 
               <h4 class="font-semibold mb-2">Usage:</h4>
-              <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+              <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative group">
+                <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy='todo add -t "Task title" [OPTIONS]'>
+                  <i class="bi bi-clipboard"></i>
+                </button>
                 <pre
                   class="text-gray-100"
                 ><code>todo add -t "Task title" [OPTIONS]</code></pre>
@@ -800,7 +900,19 @@ sudo cp todo /usr/local/bin/
 
               <h4 class="font-semibold mb-2 mt-4">Examples:</h4>
               <div class="space-y-2">
-                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto relative group">
+                  <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy='# Simple task
+todo add -t "Buy groceries"
+
+# Task with all options
+todo add -t "Complete report" \
+  -d "Q1 financial report" \
+  -p high \
+  --project "Finance" \
+  --tags "urgent,deadline" \
+  --due "2024-03-20"'>
+                    <i class="bi bi-clipboard"></i>
+                  </button>
                   <pre class="text-gray-100"><code># Simple task
 todo add -t "Buy groceries"
 
@@ -838,14 +950,28 @@ todo add -t "Complete report" \
               </p>
 
               <h4 class="font-semibold mb-2">Usage:</h4>
-              <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+              <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto relative group">
+                <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="todo list [OPTIONS]">
+                  <i class="bi bi-clipboard"></i>
+                </button>
                 <pre
                   class="text-gray-100"
                 ><code>todo list [OPTIONS]</code></pre>
               </div>
 
               <h4 class="font-semibold mb-2">Examples:</h4>
-              <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+              <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto relative group">
+                <button class="copy-btn absolute top-2 right-2 p-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" data-copy="# List all tasks
+todo list
+
+# Filter by status
+todo list --status pending
+todo list --status completed
+
+# Filter and sort
+todo list --priority high --sort date">
+                  <i class="bi bi-clipboard"></i>
+                </button>
                 <pre class="text-gray-100"><code># List all tasks
 todo list
 
@@ -1095,5 +1221,50 @@ todo list --priority high --sort date</code></pre>
 
     <!-- JavaScript -->
     <script src="./js/app.js"></script>
+    <script>
+      // Copy to clipboard functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const textToCopy = this.getAttribute('data-copy');
+
+            // Create temporary textarea
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+
+            // Select and copy
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+
+            try {
+              document.execCommand('copy');
+
+              // Change icon to checkmark
+              const icon = this.querySelector('i');
+              const originalClass = icon.className;
+              icon.className = 'bi bi-check2';
+              this.classList.add('bg-green-600');
+
+              // Reset after 2 seconds
+              setTimeout(() => {
+                icon.className = originalClass;
+                this.classList.remove('bg-green-600');
+              }, 2000);
+
+            } catch (err) {
+              console.error('Failed to copy:', err);
+            }
+
+            // Remove temporary textarea
+            document.body.removeChild(textarea);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
